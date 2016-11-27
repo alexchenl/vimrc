@@ -14,5 +14,9 @@ Plug 'mbbill/undotree'
 Plug 'bufexplorer.zip'
 Plug 'terryma/vim-expand-region'
 Plug 'maxbrunsfeld/vim-yankstack'
+Plug 'matze/vim-move'
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'mhinz/vim-startify'
+Plug 'kshenoy/vim-signature'
 
 call plug#end()

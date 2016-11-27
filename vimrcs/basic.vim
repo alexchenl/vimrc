@@ -135,10 +135,39 @@ set ffs=unix,dos,mac
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Turn backup off, since most stuff is in SVN, git et.c anyway...
-set nobackup
-set nowb
-set noswapfile
+" Initialize directories {
+function! InitializeDirectories()
+  let parent = $HOME
+  let consolidated_directory = $HOME . '/.vim/_runtime/'
+  let prefix = 'vim'
+  let dir_list = {
+        \ 'backup': 'backupdir',
+        \ 'views': 'viewdir',
+        \ 'swap': 'directory' }
+
+  if has('persistent_undo')
+    let dir_list['undo'] = 'undodir'
+  endif
+
+  let common_dir = consolidated_directory . prefix
+
+  for [dirname, settingname] in items(dir_list)
+    let directory = common_dir . dirname . '/'
+    if exists("*mkdir")
+      if !isdirectory(directory)
+        call mkdir(directory)
+      endif
+    endif
+    if !isdirectory(directory)
+      echo "Warning: Unable to create backup directory: " . directory
+      echo "Try: mkdir -p " . directory
+    else
+      let directory = substitute(directory, " ", "\\\\ ", "g")
+      exec "set " . settingname . "=" . directory
+    endif
+  endfor
+endfunction
+call InitializeDirectories()
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -230,6 +259,10 @@ endtry
 " Return to last edit position when opening files (You want this!)
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
+" Instead of reverting the cursor to the last position in the buffer, we
+" set it to the first line when editing a git commit message
+au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
+
 
 """"""""""""""""""""""""""""""
 " => Status line
@@ -316,23 +349,6 @@ command! -bang QA qa<bang>
 command! -bang Qa qa<bang>
 cmap Tabe tabe
 
-" Instead of reverting the cursor to the last position in the buffer, we
-" set it to the first line when editing a git commit message
-au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
-
-" http://vim.wikia.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
-" Restore cursor to file position in previous editing session
-function! ResCur()
-  if line("'\"") <= line("$")
-    silent! normal! g`"
-    return 1
-  endif
-endfunction
-
-augroup resCur
-  autocmd!
-  autocmd BufWinEnter * call ResCur()
-augroup END
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions

@@ -93,3 +93,24 @@ let g:lightline = {
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:gitgutter_enabled=0
 nnoremap <silent> <leader>d :GitGutterToggle<cr>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => vim-grepper 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+nnoremap <leader>g :Grepper -tool ag -cword -noprompt -quickfix -highlight<cr>
+nnoremap <leader>G :Grepper -tool ag -cword -noprompt -buffers<cr>
+
+nmap gs <plug>(GrepperOperator) xmap gs <plug>(GrepperOperator)
+
+" Optional. The default behaviour should work for most users.
+let g:grepper               = {}
+let g:grepper.tools         = ['git', 'ag', 'rg']
+let g:grepper.jump          = 1
+let g:grepper.next_tool     = '<leader>g'
+let g:grepper.simple_prompt = 1
+let g:grepper.quickfix      = 0
+
+
+let g:rainbow_active = 1

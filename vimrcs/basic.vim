@@ -95,8 +95,8 @@ if has("gui_macvim")
 endif
 
 
-" Add a bit extra margin to the left
-set foldcolumn=1
+" no extra margin to the left
+set foldcolumn=0
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -109,11 +109,6 @@ syntax enable
 if $COLORTERM == 'gnome-terminal'
   set t_Co=256
 endif
-
-try
-  colorscheme desert
-catch
-endtry
 
 set background=dark
 

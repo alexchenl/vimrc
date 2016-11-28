@@ -114,3 +114,7 @@ let g:grepper.quickfix      = 0
 
 
 let g:rainbow_active = 1
+
+let g:cpp_class_scope_highlight = 1
+" let g:cpp_experimental_simple_template_highlight = 1
+let g:cpp_experimental_template_highlight = 1  " faster but has some corner cases where it doesn't work

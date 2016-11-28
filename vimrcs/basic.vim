@@ -105,8 +105,18 @@ set foldcolumn=0
 " Enable syntax highlighting
 syntax enable 
 
+let g:solarized_termcolors=256
+let g:solarized_termtrans=1
+let g:solarized_contrast="normal"
+let g:solarized_visibility="normal"
+color solarized
+
 " Enable 256 colors palette in Gnome Terminal
 if $COLORTERM == 'gnome-terminal'
+  set t_Co=256
+endif
+" Enable 256 colors to stop the CSApprox warning and make xterm vim shine
+if &term == 'xterm' || &term == 'screen'
   set t_Co=256
 endif
 

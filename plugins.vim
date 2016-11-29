@@ -10,7 +10,6 @@ Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'itchyny/lightline.vim'
 Plug 'mbbill/undotree'
-Plug 'bufexplorer.zip'
 Plug 'terryma/vim-expand-region'
 Plug 'maxbrunsfeld/vim-yankstack'
 Plug 'matze/vim-move'
@@ -24,5 +23,7 @@ Plug 'majutsushi/tagbar'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'haya14busa/incsearch.vim'
 Plug 'haya14busa/incsearch-fuzzy.vim'
+Plug 'DrawIt'
+Plug 'valloric/youcompleteme', { 'do': './install.py' }
 
 call plug#end()

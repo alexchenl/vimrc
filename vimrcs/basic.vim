@@ -2,11 +2,14 @@
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Sets how many lines of history VIM has to remember
-set history=500
+set history=1000
 
 " Enable filetype plugins
 filetype plugin on
 filetype indent on
+
+scriptencoding utf-8
+set viewoptions=folds,options,cursor,unix,slash " Better Unix / Windows compatibility
 
 " Set to auto read when a file is changed from the outside
 set autoread
@@ -102,12 +105,20 @@ endif
 " no extra margin to the left
 set foldcolumn=0
 
+" Visual shifting (does not exit Visual mode)
+vnoremap < <gv
+vnoremap > >gv
+
+" Allow using the repeat operator with a visual selection (!)
+" http://stackoverflow.com/a/8064607/127816
+vnoremap . :normal .<CR>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable syntax highlighting
-syntax enable 
+syntax enable
 
 let g:solarized_termcolors=256
 let g:solarized_termtrans=1
@@ -198,7 +209,10 @@ set tw=500
 
 set ai "Auto indent
 set si "Smart indent
-set wrap "Wrap lines
+set nowrap "Wrap lines
+set nojoinspaces                " Prevents inserting two spaces after punctuation on a join (J)
+set splitright                  " Puts new vsplit windows to the right of the current
+set splitbelow                  " Puts new split windows to the bottom of the current
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -358,9 +372,10 @@ set background=dark
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 try
   set undofile
+  set undolevels=1000         " Maximum number of changes that can be undone
+  set undoreload=10000        " Maximum number lines to save for undo on a buffer reload
 catch
 endtry
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions

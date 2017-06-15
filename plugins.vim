@@ -23,7 +23,8 @@ Plug 'majutsushi/tagbar'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'haya14busa/incsearch.vim'
 Plug 'haya14busa/incsearch-fuzzy.vim'
-Plug 'DrawIt'
+Plug 'rhysd/vim-clang-format'
+Plug 'vim-scripts/DrawIt'
 Plug 'valloric/youcompleteme', { 'do': './install.py' }
 
 call plug#end()

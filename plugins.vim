@@ -3,7 +3,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'altercation/vim-colors-solarized'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tacahiroy/ctrlp-funky'
-Plug 'mihais/vim-mark'
+Plug 'alexchenl/Mark'
 Plug 'mhinz/vim-grepper'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'scrooloose/nerdtree'

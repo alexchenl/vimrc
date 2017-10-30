@@ -126,7 +126,6 @@ let g:solarized_termcolors=256
 let g:solarized_termtrans=1
 let g:solarized_contrast="normal"
 let g:solarized_visibility="normal"
-color solarized
 
 " Enable 256 colors palette in Gnome Terminal
 if $COLORTERM == 'gnome-terminal'
@@ -137,7 +136,7 @@ if &term == 'xterm' || &term == 'screen'
   set t_Co=256
 endif
 
-set background=dark
+set background=light
 
 " Set extra options when running in GUI mode
 if has("gui_running")
@@ -365,8 +364,7 @@ set guioptions-=l
 set guioptions-=L
 
 " Colorscheme
-set background=dark
-" colorscheme solarized
+colorscheme solarized
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Turn persistent undo on
